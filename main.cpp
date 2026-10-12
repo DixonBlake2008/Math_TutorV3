@@ -1,9 +1,9 @@
 /********************************************************************************************************************************************
  Program....: MathTutorV2
- Programmers: Blake Dixon and Broderick Busch
- Date.......: 2026.09.28
+ Programmers: Blake Dixon and Connor Stolpe
+ Date.......: 2026.10.12
  Section....: 2 or 10am
- GitHub Repo: https://github.com/DixonBlake2008/Math_TutorV2
+ GitHub Repo: https://github.com/DixonBlake2008/Math_TutorV3
  Description: An easy math tutor for young children. In version 2, it displays the program's intro, gets the user's full name,
               asks a random question, and then displays if they are correct and then ends the program.
 ********************************************************************************************************************************************/

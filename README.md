@@ -18,7 +18,7 @@ This is a Silly Simple Math Tutor for young children.
 
 
 ## Maintainers
-[@Broderick389](https://github.com/Broderick389) Brody Busch    
+[@ConnorStolpe](https://github.com/ConnorStolpe) Connor Stolpe   
 [@DixonBlake2008](https://github.com/DixonBlake2008) Blake Dixon
 
 
