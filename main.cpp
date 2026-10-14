@@ -22,7 +22,7 @@ int main() { // Initiate variables for user name and answer
     int leftNum = 0; // the 1st random number between 1 and 10
     int rightNum = 0; // the 2nd random number between 1 and 10
 
-    int mathType = 0; // random number [1=add, 2=sub, 3=multi, 4=div]
+    enum mathType {MT_ADD, MT_MINUS, MT_MULT, MT_DIV }; // random number [1=add, 2=sub, 3=multi, 4=div]
     char mathSym = '?'; // [+, -, *, /]
 
     int userAnswer = 0; // the user's answer to the math question
@@ -63,12 +63,12 @@ int main() { // Initiate variables for user name and answer
    // mathType = 5; // only for testing default block
     //  Converts mathType numbers into symbols
     switch (mathType) {
-        case 1: // addition
+        case MT_ADD: // addition
             mathSym = '+';
             correctAnswer = leftNum + rightNum;
             break;
 
-        case 2: // subtraction
+        case MT_MINUS: // subtraction
             mathSym = '-';
             if (leftNum < rightNum){ // avoiding negative numbers
                 tempNum = leftNum;
@@ -78,12 +78,12 @@ int main() { // Initiate variables for user name and answer
             correctAnswer = leftNum - rightNum;
             break;
 
-        case 3: // multiply
+        case MT_MULT: // multiply
             mathSym = '*';
             correctAnswer = leftNum * rightNum;
             break;
 
-        case 4: //division
+        case MT_DIV: //division
             mathSym = '/';
             leftNum *= rightNum; // avoids fractions
             correctAnswer = leftNum / rightNum;
