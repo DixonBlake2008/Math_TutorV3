@@ -27,6 +27,15 @@ int main() { // Initiate variables for user name and answer
     MathType mathType = MT_ADD;
     char mathSym = '?'; // [+, -, *, /]
 
+    // Define the constants and variables
+    const int MAX_ATTEMPTS = 3;
+    const int LEVEL_CHANGE = 10;
+
+    int totalCorrect = 0;
+    int totalIncorrect = 0;
+    int mathLevel = 1;
+    int currentRange = LEVEL_CHANGE;
+
     int userAnswer = 0; // the user's answer to the math question
     int correctAnswer = 0; // the correct answer
 
