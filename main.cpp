@@ -22,7 +22,8 @@ int main() { // Initiate variables for user name and answer
     int leftNum = 0; // the 1st random number between 1 and 10
     int rightNum = 0; // the 2nd random number between 1 and 10
 
-    enum mathType {MT_ADD, MT_MINUS, MT_MULT, MT_DIV }; // random number [1=add, 2=sub, 3=multi, 4=div]
+    enum MathType {MT_ADD, MT_MINUS, MT_MULT, MT_DIV}; // random number [1=add, 2=sub, 3=multi, 4=div]
+    MathType mathType = MT_ADD;
     char mathSym = '?'; // [+, -, *, /]
 
     int userAnswer = 0; // the user's answer to the math question
@@ -58,7 +59,7 @@ int main() { // Initiate variables for user name and answer
 
     leftNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the left number
     rightNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the right number
-    mathType = rand() % 4 + 1; // 1=add, 2=subtract, 3=multiply, 4=divide
+   mathType = static_cast<MathType>(rand() % 4 + 1);
 
    // mathType = 5; // only for testing default block
     //  Converts mathType numbers into symbols
