@@ -12,6 +12,7 @@
 #include <cstdlib> // for srand and rand
 #include <ctime> // for time seeding
 #include <string> // for string data types
+#include <limits> // limits library
 using namespace std;
 
 int main() { // Initiate variables for user name and answer
@@ -29,7 +30,7 @@ int main() { // Initiate variables for user name and answer
     int userAnswer = 0; // the user's answer to the math question
     int correctAnswer = 0; // the correct answer
 
-    char userInput; // user input variable for yes or no question
+    string userInput; // user input variable for yes or no question
 
     srand(time(NULL));  // allows the program to generate random numbers
     SetConsoleOutputCP(CP_UTF8);  // allows the program to show math characters in qoutes
@@ -105,6 +106,15 @@ int main() { // Initiate variables for user name and answer
         // Get and check user answer
         cout << "What is " << leftNum << " " << mathSym << " " << rightNum << endl;
         cin >> userAnswer;
+
+        //Loop until the user enters numeric data
+        while (!(cin>> userAnswer)) {
+            cin.clear(); // clear the cin error flag
+            // need to include the limits library to use numeric_limits
+            cin.ignore (numeric_limits<streamsize>::max(),'\n'); // ignore the max input, up to '\n'
+            cout << "\tInvalid input!" << endl;
+            cout << "\tPlease enter a number: ";
+        }//end of get userAnswer while loop
 
         // checks and tells user if they were wrong or correct
         if (userAnswer == correctAnswer) {
