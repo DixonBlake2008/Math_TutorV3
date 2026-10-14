@@ -29,6 +29,8 @@ int main() { // Initiate variables for user name and answer
     int userAnswer = 0; // the user's answer to the math question
     int correctAnswer = 0; // the correct answer
 
+    char userInput; // user input variable for yes or no question
+
     srand(time(NULL));  // allows the program to generate random numbers
     SetConsoleOutputCP(CP_UTF8);  // allows the program to show math characters in qoutes
 
@@ -57,60 +59,63 @@ int main() { // Initiate variables for user name and answer
     cout << "Welcome " << name << " to the Silly Simple Math Tutor! Hope you are smart enough to completely get these very simple questions down." << endl;
     cout << endl;
 
-    leftNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the left number
-    rightNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the right number
-   mathType = static_cast<MathType>(rand() % 4 + 1);
+    do {
+        leftNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the left number
+        rightNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the right number
+        mathType = static_cast<MathType>(rand() % 4 + 1);
 
-   // mathType = 5; // only for testing default block
-    //  Converts mathType numbers into symbols
-    switch (mathType) {
-        case MT_ADD: // addition
-            mathSym = '+';
-            correctAnswer = leftNum + rightNum;
-            break;
+        // mathType = 5; // only for testing default block
+        //  Converts mathType numbers into symbols
+        switch (mathType) {
+            case MT_ADD: // addition
+                mathSym = '+';
+                correctAnswer = leftNum + rightNum;
+                break;
 
-        case MT_MINUS: // subtraction
-            mathSym = '-';
-            if (leftNum < rightNum){ // avoiding negative numbers
-                tempNum = leftNum;
-                rightNum = leftNum;
-                rightNum = tempNum;
-            }
-            correctAnswer = leftNum - rightNum;
-            break;
+            case MT_MINUS: // subtraction
+                mathSym = '-';
+                if (leftNum < rightNum){ // avoiding negative numbers
+                    tempNum = leftNum;
+                    rightNum = leftNum;
+                    rightNum = tempNum;
+                }
+                correctAnswer = leftNum - rightNum;
+                break;
 
-        case MT_MULT: // multiply
-            mathSym = '*';
-            correctAnswer = leftNum * rightNum;
-            break;
+            case MT_MULT: // multiply
+                mathSym = '*';
+                correctAnswer = leftNum * rightNum;
+                break;
 
-        case MT_DIV: //division
-            mathSym = '/';
-            leftNum *= rightNum; // avoids fractions
-            correctAnswer = leftNum / rightNum;
-            break;
+            case MT_DIV: //division
+                mathSym = '/';
+                leftNum *= rightNum; // avoids fractions
+                correctAnswer = leftNum / rightNum;
+                break;
 
-        default: // for errors, should not happen
-            cout << "Invalid Question Type: " << mathType << endl;
-            cout << "Program ended with an Error -1." << endl;
-            cout << "please report this to Brody or Blake, appreciate you reading this." << endl;
+            default: // for errors, should not happen
+                cout << "Invalid Question Type: " << mathType << endl;
+                cout << "Program ended with an Error -1." << endl;
+                cout << "please report this to Brody or Blake, appreciate you reading this." << endl;
 
-            return -1;
-            break;
-    }
+                return -1;
+                break;
+        }
 
-    // Get and check user answer
-    cout << "What is " << leftNum << " " << mathSym << " " << rightNum << endl;
-    cin >> userAnswer;
+        // Get and check user answer
+        cout << "What is " << leftNum << " " << mathSym << " " << rightNum << endl;
+        cin >> userAnswer;
 
-    // checks and tells user if they were wrong or correct
-    if (userAnswer == correctAnswer) {
-        cout << "That is Correct, good job!" << endl;
-    }
-    else {
-        cout << "That is incorrect, the correct answer was " << correctAnswer << endl;
-    }
-
+        // checks and tells user if they were wrong or correct
+        if (userAnswer == correctAnswer) {
+            cout << "That is Correct, good job!" << endl;
+            cout << "Do you want to continue? (Yes or No): ";
+            cin >> userInput;
+        }
+        else {
+            cout << "That is incorrect, the correct answer was " << correctAnswer << endl;
+        }
+    } while (userInput == "yes" || userInput == "y");
     // End of program
     cout << endl;
     cout << "sorry, still in the earlier versions." << endl;
