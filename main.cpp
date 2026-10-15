@@ -1,5 +1,5 @@
 /********************************************************************************************************************************************
- Program....: MathTutorV2
+ Program....: MathTutorV3
  Programmers: Blake Dixon and Connor Stolpe
  Date.......: 2026.10.12
  Section....: 2 or 10am
@@ -27,14 +27,13 @@ int main() { // Initiate variables for user name and answer
     MathType mathType = MT_ADD;
     char mathSym = '?'; // [+, -, *, /]
 
-    // Define the constants and variables
-    const int MAX_ATTEMPTS = 3;
-    const int LEVEL_CHANGE = 10;
+    const int MAX_ATTEMPTS = 3; // defines the amount of max amount of attempts before leveling down
+    const int LEVEL_CHANGE = 10; // how much the level changes by at each level
 
-    int totalCorrect = 0;
-    int totalIncorrect = 0;
-    int mathLevel = 1;
-    int currentRange = LEVEL_CHANGE;
+    int totalCorrect = 0; // counts how many answers the users has gotten correct for level up
+    int totalIncorrect = 0; // counts how many answers the users has gotten incorrect for level down
+    int mathLevel = 1; // what level the Math Tutor is at
+    int currentRange = LEVEL_CHANGE; // sets the base number range of level 1
 
     int userAnswer = 0; // the user's answer to the math question
     int correctAnswer = 0; // the correct answer
@@ -42,7 +41,7 @@ int main() { // Initiate variables for user name and answer
     string userInput; // user input variable for yes or no question
 
     srand(time(NULL));  // allows the program to generate random numbers
-    SetConsoleOutputCP(CP_UTF8);  // allows the program to show math characters in qoutes
+    SetConsoleOutputCP(CP_UTF8);  // allows the program to show math characters in quotes
 
     // ASCII art and math fun facts
     cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
@@ -61,6 +60,8 @@ int main() { // Initiate variables for user name and answer
     cout << "    * √(-1) 2³ ∑ π and it was yummy!" << endl;
     cout << "    * Are monsters good at math? Not unless you Count Dracula." << endl;
     cout << "    * Why should you never argue with a 90-degree angle? Because it's always right." << endl;
+    cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
+
 
     // Get user's full name and welcomes them
     cout << endl;
@@ -70,75 +71,96 @@ int main() { // Initiate variables for user name and answer
     cout << endl;
 
     do {
-        leftNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the left number
-        rightNum = rand() % 10 + 1; //  Generates random numbers between 1 and 10 for the right number
-        mathType = static_cast<MathType>(rand() % 4 + 1);
+        leftNum = rand() % currentRange + 1; // Generates random numbers between 1 and 10 for the left number
+        rightNum = rand() % currentRange + 1; // Generates random numbers between 1 and 10 for the right number
+        mathType = static_cast<MathType>(rand() % 4);
 
         // mathType = 5; // only for testing default block
         //  Converts mathType numbers into symbols
         switch (mathType) {
-            case MT_ADD: // addition
-                mathSym = '+';
-                correctAnswer = leftNum + rightNum;
-                break;
+        case MT_ADD: // addition
+            mathSym = '+';
+            correctAnswer = leftNum + rightNum;
+            break;
 
-            case MT_MINUS: // subtraction
-                mathSym = '-';
-                if (leftNum < rightNum){ // avoiding negative numbers
-                    tempNum = leftNum;
-                    rightNum = leftNum;
-                    rightNum = tempNum;
+        case MT_MINUS: // subtraction
+            mathSym = '-';
+            if (leftNum < rightNum){ // avoiding negative numbers
+                tempNum = leftNum;
+                rightNum = leftNum;
+                rightNum = tempNum;
+            }
+            correctAnswer = leftNum - rightNum;
+            break;
+
+        case MT_MULT: // multiply
+            mathSym = '*';
+            correctAnswer = leftNum * rightNum;
+            break;
+
+        case MT_DIV: //division
+            mathSym = '/';
+            leftNum *= rightNum; // avoids fractions
+            correctAnswer = leftNum / rightNum;
+            break;
+
+        default: // for errors, should not happen
+            cout << "Invalid Question Type: " << mathType << endl;
+            cout << "Program ended with an Error -1." << endl;
+            cout << "please report this to Brody or Blake, appreciate you reading this." << endl;
+
+            return -1;
+            break;
+        }
+        for (int i = 1; i <= MAX_ATTEMPTS; i++){ // sets 3 attempts for the questions
+            // Puts the numbers together to make a question and tells the user what level they are on
+            cout << "[Level [" << mathLevel << "] " << name << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
+
+            //Loop until the user enters numeric data
+            while (!(cin >> userAnswer)) {
+                cin.clear(); // clear the cin error flag
+                // need to include the limits library to use numeric_limits
+                cin.ignore (numeric_limits<streamsize>::max(),'\n'); // ignore the max input, up to '\n'
+                cout << "\tInvalid input!" << endl;
+                cout << "\tPlease enter a number: ";
+            }//end of get userAnswer while loop
+
+            // tells user if they were correct and adds to the total correct value
+            if (userAnswer == correctAnswer) {
+                totalCorrect++;
+                cout << correctAnswer << " was correct, great job!" << endl;
+                break;
+            }
+            else { // tells users that they are incorrect
+                if (i == MAX_ATTEMPTS) { // adds to the incorrect counter
+                    totalIncorrect++;
+                    cout << "That is incorrect, the correct answer was " << correctAnswer << endl;
                 }
-                correctAnswer = leftNum - rightNum;
-                break;
-
-            case MT_MULT: // multiply
-                mathSym = '*';
-                correctAnswer = leftNum * rightNum;
-                break;
-
-            case MT_DIV: //division
-                mathSym = '/';
-                leftNum *= rightNum; // avoids fractions
-                correctAnswer = leftNum / rightNum;
-                break;
-
-            default: // for errors, should not happen
-                cout << "Invalid Question Type: " << mathType << endl;
-                cout << "Program ended with an Error -1." << endl;
-                cout << "please report this to Brody or Blake, appreciate you reading this." << endl;
-
-                return -1;
-                break;
+                else { // tells the user to try again
+                    cout << "That is incorrect, you have " << (3 - i) << " trys left!" << endl;
+                }
+            }
         }
+            getline(cin, userInput); // clearing the newline from the input buffer
+            while (true){
+                cout << "Do you want to continue? (Yes or No): "; // asks the user if they want another question
+                getline(cin, userInput); // Grab's user input
 
-        // Get and check user answer
-        cout << "What is " << leftNum << " " << mathSym << " " << rightNum << endl;
-        cin >> userAnswer;
-
-        //Loop until the user enters numeric data
-        while (!(cin>> userAnswer)) {
-            cin.clear(); // clear the cin error flag
-            // need to include the limits library to use numeric_limits
-            cin.ignore (numeric_limits<streamsize>::max(),'\n'); // ignore the max input, up to '\n'
-            cout << "\tInvalid input!" << endl;
-            cout << "\tPlease enter a number: ";
-        }//end of get userAnswer while loop
-
-        // checks and tells user if they were wrong or correct
-        if (userAnswer == correctAnswer) {
-            cout << "That is Correct, good job!" << endl;
-            cout << "Do you want to continue? (Yes or No): ";
-            cin >> userInput;
-        }
-        else {
-            cout << "That is incorrect, the correct answer was " << correctAnswer << endl;
-        }
+                for (int i = 0; i < userInput.size(); i++){
+                    userInput.at(i) = tolower(userInput.at(i)); // makes characters in input lowercase
+                }
+                if (userInput == "y" || userInput == "yes" || userInput == "n" || userInput == "no"){
+                    break; // checks for yes or no inputs then leaves loop
+                }
+                else { // for invalid input
+                    cout << "Please enter a valid input!" << endl;
+                }
+            }
     } while (userInput == "yes" || userInput == "y");
     // End of program
     cout << endl;
-    cout << "sorry, still in the earlier versions." << endl;
-    cout << "Just you wait hen Math Tutor V3 comes out, then you'll be screwed!!!" << endl;
-    cout << "okay bye bye. End of Program" << endl;
+    cout << "This is the end of the current program" << endl;
+    cout << "Math Tutor version 4 will release soon!" << endl;
+    cout << "End of Program" << endl;
     return 0;
 }
