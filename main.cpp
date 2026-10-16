@@ -146,17 +146,19 @@ int main() { // Initiate variables for user name and answer
             currentRange = currentRange + LEVEL_CHANGE;
             totalCorrect = 0;
             totalIncorrect = 0;
-            cout << "Congrats you've leveled up! The numbers now range from 1 to " << currentRange << "." << endl;
+            mathLevel ++;
+            cout << "You leveled up. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
-
-            else if (totalIncorrect == 3) {
-                currentRange = currentRange - LEVEL_CHANGE;
-                totalIncorrect = 0;
-                totalCorrect = 0;
-                cout << "You leveled down. The numbers now range from 1 to " << currentRange << "." << endl;
-                cout << endl;
             }
+        else if (totalIncorrect == 3) {
+            currentRange = currentRange - LEVEL_CHANGE;
+            totalIncorrect = 0;
+            totalCorrect = 0;
+            mathLevel = mathLevel - 1;
+            cout << "You leveled down. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
+            cout << endl;
         }
+
             getline(cin, userInput); // clearing the newline from the input buffer
             while (true){
                 cout << "Do you want to continue? (Yes or No): "; // asks the user if they want another question
