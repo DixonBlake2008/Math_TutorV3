@@ -141,7 +141,7 @@ int main() { // Initiate variables for user name and answer
                 }
             }
         }
-
+        // Adds 10 to current range of numbers and levels up the user.
         if (totalCorrect == 3) {
             currentRange = currentRange + LEVEL_CHANGE;
             totalCorrect = 0;
@@ -150,6 +150,7 @@ int main() { // Initiate variables for user name and answer
             cout << "You leveled up. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
             }
+        // Subtracts 10 from the users current range and levels down the user.
         else if (totalIncorrect == 3) {
             currentRange = currentRange - LEVEL_CHANGE;
             totalIncorrect = 0;
