@@ -141,6 +141,12 @@ int main() { // Initiate variables for user name and answer
                 }
             }
         }
+
+        if (totalCorrect = 3) {
+            cout << "Congrats you've leveld up!" << endl;
+            cout << endl;
+            currentRange + levelRange;
+        }
             getline(cin, userInput); // clearing the newline from the input buffer
             while (true){
                 cout << "Do you want to continue? (Yes or No): "; // asks the user if they want another question
