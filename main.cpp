@@ -114,7 +114,7 @@ int main() { // Initiate variables for user name and answer
             return -1;
             break;
         }
-        for (int i = 1; i <= MAX_ATTEMPTS; i++){ // sets 3 attempts for the questions
+        for (int i = 1; i <= MAX_ATTEMPTS; i++) { // sets 3 attempts for the questions
             // Puts the numbers together to make a question and tells the user what level they are on
             cout << "[Level [" << mathLevel << "] " << name << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
 
@@ -125,14 +125,13 @@ int main() { // Initiate variables for user name and answer
                 cin.ignore (numeric_limits<streamsize>::max(),'\n'); // ignore the max input, up to '\n'
                 cout << "\tInvalid input!" << endl;
                 cout << "\tPlease enter a number: ";
-            }//end of get userAnswer while loop
+            } //end of get userAnswer while loop
 
-            // tells user if they were correct and adds to the total correct value
-            if (userAnswer == correctAnswer) {
+            if (userAnswer == correctAnswer) { // tells user if they were correct and adds to the total correct value
                 totalCorrect++;
                 cout << correctAnswer << " was correct, great job!" << endl;
                 break;
-            }
+            } // End of if
             else { // tells users that they are incorrect
                 if (i == MAX_ATTEMPTS) { // adds to the incorrect counter
                     totalIncorrect++;
@@ -141,26 +140,31 @@ int main() { // Initiate variables for user name and answer
                 else { // tells the user to try again
                     cout << "That is incorrect, you have " << (3 - i) << " trys left!" << endl;
                 }
-            }
-        }
-        // Adds 10 to current range of numbers and levels up the user.
-        if (totalCorrect == 3) {
+            } // End of else
+        } // End of for loop
+
+        if (totalCorrect == 3) { // Adds 10 to current range of numbers and levels up the user.
             currentRange = currentRange + LEVEL_CHANGE;
+
+            // Reset totalCorrect and incorrect counters
             totalCorrect = 0;
             totalIncorrect = 0;
+
             mathLevel ++;
             cout << "You leveled up. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
-            }
-        // Subtracts 10 from the users current range and levels down the user.
-        else if (totalIncorrect == 3 && mathLevel > 1) {
+            } // End of if
+        else if (totalIncorrect == 3 && mathLevel > 1) {  // Subtracts 10 from the users current range and levels down the user.
             currentRange = currentRange - LEVEL_CHANGE;
+
+            // Reset totalCorrect and incorrect counters
             totalIncorrect = 0;
             totalCorrect = 0;
+
             mathLevel = mathLevel - 1;
             cout << "You leveled down. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
-        }
+        } // End of else if
 
             getline(cin, userInput); // clearing the newline from the input buffer
             while (true){
@@ -176,8 +180,9 @@ int main() { // Initiate variables for user name and answer
                 else { // for invalid input
                     cout << "Please enter a valid input!" << endl;
                 }
-            }
-    } while (userInput == "yes" || userInput == "y");
+            } // End of while loop
+
+    } while (userInput == "yes" || userInput == "y"); // End of do while loop
     // End of program
     cout << endl;
     cout << "This is the end of the current program" << endl;
