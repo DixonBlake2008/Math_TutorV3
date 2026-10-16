@@ -151,7 +151,7 @@ int main() { // Initiate variables for user name and answer
             cout << endl;
             }
         // Subtracts 10 from the users current range and levels down the user.
-        else if (totalIncorrect == 3) {
+        else if (totalIncorrect == 3 && mathLevel > 1) {
             currentRange = currentRange - LEVEL_CHANGE;
             totalIncorrect = 0;
             totalCorrect = 0;
