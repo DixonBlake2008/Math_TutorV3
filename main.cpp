@@ -4,8 +4,10 @@
  Date.......: 2026.10.12
  Section....: 2 or 10am
  GitHub Repo: https://github.com/DixonBlake2008/Math_TutorV3
- Description: An easy math tutor for young children. In version 2, it displays the program's intro, gets the user's full name,
-              asks a random question, and then displays if they are correct and then ends the program.
+ Description: An easy math tutor for young children. In version 3, it displays the program's intro, gets the user's full name,
+ goes into a do while loop so that the user can answer questions that either levels them up or down depending on their answers,
+ adds an option for the user to exit the program in case they don't want to continue,
+ gives them a max amount of attempts based on whether they answer the questions incorrect, and then ends to program once they are done.
 ********************************************************************************************************************************************/
 #include <iostream> // for cout & cin
 #include <windows.h> // for math symbols
