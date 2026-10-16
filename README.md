@@ -5,16 +5,23 @@
 - [Maintainers](#maintainers)
 - [New Concepts Used](#new-concepts-used)
 - [Console Output Example](#console-output-example)
+  - [Leveling up](#leveling-up)
+  - [Leveling down](#leveling-down)
+  - [Invalid Numeric Input](#invalid-numeric-input)
+  - [Invalid Yes or No Input](#invalid-yes-or-no-input)
 
 ## Summary
 This is a Silly Simple Math Tutor for young children.
 - Display the program header
 - Tells a few jokes
 - Gets the user's full name and welcomes to the user to the game
-- Displays only one random math question
+- Displays random math questions
 - Checks the user's answer
-- Displays the correct answer if user is incorrect
-- Says goodbye to the user
+- Gives the user 3 attempts if they are incorrect
+- Gives the user multiple math questions
+- asks the user if they want to continue
+- Levels the user up if they get 3 correct 
+- Levels the user down if they get 3 incorrect unless they are on level 1
 
 
 ## Maintainers
@@ -23,106 +30,84 @@ This is a Silly Simple Math Tutor for young children.
 
 
 ## New Concepts Used
-- if else
-- switch
-- rand
-- srand
-- getline
+- enum
+- while loops
+- static_cast
+- for loops
 
 
-## Console Output Testing Example: Correct
+## Leveling Up
 ```
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|   _       __     __                             __           __  ___      __  __       ______      __              |
-|  | |     / /__  / /________  ____ ___  ___     / /_____     /  |/  /___ _/ /_/ /_     /_  __/_  __/ /_____  _____  |
-|  | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \   / __/ __ \   / /|_/ / __ `/ __/ __ \     / / / / / / __/ __ \/ ___/  |
-|  | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/  / /_/ /_/ /  / /  / / /_/ / /_/ / / /    / / / /_/ / /_/ /_/ / /      |
-|  |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/   \__/\____/  /_/  /_/\__,_/\__/_/ /_/    /_/  \__,_/\__/\____/_/       |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|                                  Welcome to the Silly Simple Math Tutor version 2!                                 |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+[Level [1] Blake, what does 18 / 2 =9
 
-Here are some cool math jokes:
-    * There's no limit to what math can do.
-    * Some people have some polar opinions about math.
-    * √(-1) 2³ ∑ π and it was yummy!
-    * Are monsters good at math? Not unless you Count Dracula.
-    * Why should you never argue with a 90-degree angle? Because it's always right.
+9 was correct, great job!
+Do you want to continue? (Yes or No):y
 
-What is your name:Blake Dixon
+[Level [1] Blake, what does 6 + 1 =7
 
-Welcome Blake Dixon to the Silly Simple Math Tutor! Hope you are smart enough to completely get these very simple questi
-ons down.
+7 was correct, great job!
+Do you want to continue? (Yes or No):y
 
-What is 9 * 1
-9
+[Level [1] Blake, what does 9 - 5 =4
 
-That is Correct, good job!
-
-sorry, still in the earlier versions.
-Just you wait hen Math Tutor V3 comes out, then you'll be screwed!!!
-okay bye bye. End of Program
+4 was correct, great job!
+You leveled up. You are now level #2 The numbers now range from 1 to 20.
 ```
 
-## Console Output Testing Example: Wrong
+## Leveling Down
 ```
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|   _       __     __                             __           __  ___      __  __       ______      __              |
-|  | |     / /__  / /________  ____ ___  ___     / /_____     /  |/  /___ _/ /_/ /_     /_  __/_  __/ /_____  _____  |
-|  | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \   / __/ __ \   / /|_/ / __ `/ __/ __ \     / / / / / / __/ __ \/ ___/  |
-|  | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/  / /_/ /_/ /  / /  / / /_/ / /_/ / / /    / / / /_/ / /_/ /_/ / /      |
-|  |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/   \__/\____/  /_/  /_/\__,_/\__/_/ /_/    /_/  \__,_/\__/\____/_/       |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|                                  Welcome to the Silly Simple Math Tutor version 2!                                 |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+[Level [2] Blake, what does 11 - 11 =2
 
-Here are some cool math jokes:
-    * There's no limit to what math can do.
-    * Some people have some polar opinions about math.
-    * √(-1) 2³ ∑ π and it was yummy!
-    * Are monsters good at math? Not unless you Count Dracula.
-    * Why should you never argue with a 90-degree angle? Because it's always right.
+That is incorrect, you have 2 trys left!
+[Level [2] Blake, what does 11 - 11 =1
 
-What is your name:e
-
-Welcome e to the Silly Simple Math Tutor! Hope you are smart enough to completely get these very simple questions down.
-
-What is 3 - 3
-1
+That is incorrect, you have 1 trys left!
+[Level [2] Blake, what does 11 - 11 =2
 
 That is incorrect, the correct answer was 0
+Do you want to continue? (Yes or No):y
 
-sorry, still in the earlier versions.
-Just you wait hen Math Tutor V3 comes out, then you'll be screwed!!!
-okay bye bye. End of Program
+[Level [2] Blake, what does 11 - 2 =2
+
+That is incorrect, you have 2 trys left!
+[Level [2] Blake, what does 11 - 2 =2
+
+That is incorrect, you have 1 trys left!
+[Level [2] Blake, what does 11 - 2 =2
+
+That is incorrect, the correct answer was 9
+Do you want to continue? (Yes or No):y
+
+[Level [2] Blake, what does 18 + 13 =2
+
+That is incorrect, you have 2 trys left!
+[Level [2] Blake, what does 18 + 13 =2
+
+That is incorrect, you have 1 trys left!
+[Level [2] Blake, what does 18 + 13 =2
+
+That is incorrect, the correct answer was 31
+You leveled down. You are now level #1 The numbers now range from 1 to 10.
+
+Do you want to continue? (Yes or No):
 ```
-## Console Output Testing Example: Error code -1
+## Invalid Numeric Input
 ```
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|   _       __     __                             __           __  ___      __  __       ______      __              |
-|  | |     / /__  / /________  ____ ___  ___     / /_____     /  |/  /___ _/ /_/ /_     /_  __/_  __/ /_____  _____  |
-|  | | /| / / _ \/ / ___/ __ \/ __ `__ \/ _ \   / __/ __ \   / /|_/ / __ `/ __/ __ \     / / / / / / __/ __ \/ ___/  |
-|  | |/ |/ /  __/ / /__/ /_/ / / / / / /  __/  / /_/ /_/ /  / /  / / /_/ / /_/ / / /    / / / /_/ / /_/ /_/ / /      |
-|  |__/|__/\___/_/\___/\____/_/ /_/ /_/\___/   \__/\____/  /_/  /_/\__,_/\__/_/ /_/    /_/  \__,_/\__/\____/_/       |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
-|                                  Welcome to the Silly Simple Math Tutor version 2!                                 |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+That is incorrect, you have 2 trys left!
+[Level [2] Blake, what does 11 - 11 =abc
 
-Here are some cool math jokes:
-    * There's no limit to what math can do.
-    * Some people have some polar opinions about math.
-    * √(-1) 2³ ∑ π and it was yummy!
-    * Are monsters good at math? Not unless you Count Dracula.
-    * Why should you never argue with a 90-degree angle? Because it's always right.
+        Invalid input!
+        Please enter a number:1
 
-What is your name:blake
+That is incorrect, you have 1 trys left!
+[Level [2] Blake, what does 11 - 11 =
+```
+## Invalid Yes or No Input
+```
+You leveled up. You are now level #2 The numbers now range from 1 to 20.
 
-Welcome blake to the Silly Simple Math Tutor! Hope you are smart enough to completely get these very simple questions do
-wn.
+Do you want to continue? (Yes or No):what
 
-Invalid Question Type: 5
-Program ended with an Error -1.
-please report this to Brody or Blake, appreciate you reading this.
-
-Process finished with exit code -1
+Please enter a valid input!
+Do you want to continue? (Yes or No):
 ```
