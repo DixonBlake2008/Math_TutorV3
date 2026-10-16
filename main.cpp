@@ -144,7 +144,7 @@ int main() { // Initiate variables for user name and answer
 
         if (totalCorrect == 3) {
             currentRange = currentRange + LEVEL_CHANGE;
-            cout << "Congrats you've leveled up! THe numbers now range from 1 to " << currentRange << "!" << endl;
+            cout << "Congrats you've leveled up! THe numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
         }
             getline(cin, userInput); // clearing the newline from the input buffer
