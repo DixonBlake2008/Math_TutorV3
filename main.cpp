@@ -146,6 +146,8 @@ int main() { // Initiate variables for user name and answer
             cout << "Congrats you've leveld up!" << endl;
             cout << endl;
             currentRange + levelRange;
+
+
         }
             getline(cin, userInput); // clearing the newline from the input buffer
             while (true){
