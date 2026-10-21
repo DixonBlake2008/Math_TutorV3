@@ -67,7 +67,6 @@ int main() { // Initiate variables for user name and answer
     cout << endl;
     cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
 
-
     // Get user's full name and welcomes them
     cout << endl;
     cout << "What is your name: ";
