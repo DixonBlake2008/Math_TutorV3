@@ -119,7 +119,7 @@ int main() { // Initiate variables for user name and answer
         }
         for (int i = 1; i <= MAX_ATTEMPTS; i++) { // sets 3 attempts for the questions
             // Puts the numbers together to make a question and tells the user what level they are on
-            cout << "[Level [" << mathLevel << "] " << name << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
+            cout << "Level [" << mathLevel << "] " << name << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
 
             //Loop until the user enters numeric data
             while (!(cin >> userAnswer)) {
