@@ -113,7 +113,7 @@ int main() { // Initiate variables for user name and answer
         default: // for errors, should not happen
             cout << "Invalid Question Type: " << mathType << endl;
             cout << "Program ended with an Error -1." << endl;
-            cout << "please report this to Brody or Blake, appreciate you reading this." << endl;
+            cout << "please report this to Connor or Blake, appreciate you reading this." << endl;
 
             return -1;
             break;
