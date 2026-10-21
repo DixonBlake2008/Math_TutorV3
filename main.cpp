@@ -62,6 +62,7 @@ int main() { // Initiate variables for user name and answer
     cout << "    * √(-1) 2³ ∑ π and it was yummy!" << endl;
     cout << "    * Are monsters good at math? Not unless you Count Dracula." << endl;
     cout << "    * Why should you never argue with a 90-degree angle? Because it's always right." << endl;
+    cout << endl;
     cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
 
 
@@ -69,7 +70,9 @@ int main() { // Initiate variables for user name and answer
     cout << endl;
     cout << "What is your name: ";
     getline (cin, name);
-    cout << "Welcome " << name << " to the Silly Simple Math Tutor! Hope you are smart enough to completely get these very simple questions down." << endl;
+    cout << "Welcome " << name << " to the Silly Simple Math Tutor! Good luck and have fun!" << endl;
+    cout << endl;
+    cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
     cout << endl;
 
     do {
@@ -184,9 +187,12 @@ int main() { // Initiate variables for user name and answer
 
     } while (userInput == "yes" || userInput == "y"); // End of do while loop
     // End of program
+    cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
     cout << endl;
     cout << "This is the end of the current program" << endl;
     cout << "Math Tutor version 4 will release soon!" << endl;
     cout << "End of Program" << endl;
+    cout << endl;
+    cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
     return 0;
 }
