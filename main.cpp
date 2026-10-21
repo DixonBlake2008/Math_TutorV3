@@ -9,12 +9,14 @@
  adds an option for the user to exit the program in case they don't want to continue,
  gives them a max amount of attempts based on whether they answer the questions incorrect, and then ends to program once they are done.
 ********************************************************************************************************************************************/
+#include <cctype> //tolower
 #include <iostream> // for cout & cin
 #include <windows.h> // for math symbols
 #include <cstdlib> // for srand and rand
 #include <ctime> // for time seeding
 #include <string> // for string data types
 #include <limits> // limits library
+
 using namespace std;
 
 int main() { // Initiate variables for user name and answer
