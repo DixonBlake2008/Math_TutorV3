@@ -4,10 +4,17 @@
  Date.......: 2026.10.12
  Section....: 2 or 10am
  GitHub Repo: https://github.com/DixonBlake2008/Math_TutorV3
- Description: An easy math tutor for young children. In version 3, it displays the program's intro, gets the user's full name,
- goes into a do while loop so that the user can answer questions that either levels them up or down depending on their answers,
- adds an option for the user to exit the program in case they don't want to continue,
- gives them a max amount of attempts based on whether they answer the questions incorrect, and then ends to program once they are done.
+ Description:
+- Display the program header
+- Tells a few jokes
+- Gets the user's full name and welcomes to the user to the game
+- Displays random math questions
+- Checks the user's answer
+- Gives the user 3 attempts if they are incorrect
+- Gives the user multiple math questions
+- asks the user if they want to continue
+- Levels the user up if they get 3 correct
+- Levels the user down if they get 3 incorrect unless they are on level 1
 ********************************************************************************************************************************************/
 #include <cctype> //tolower
 #include <iostream> // for cout & cin
@@ -20,7 +27,7 @@
 using namespace std;
 
 int main() { // Initiate variables for user name and answer
-    string name = "unknown"; // the user's name
+    string userName = "unknown"; // the user's name
 
     int tempNum = 0; // uses to swap two values
 
@@ -70,16 +77,17 @@ int main() { // Initiate variables for user name and answer
     // Get user's full name and welcomes them
     cout << endl;
     cout << "What is your name: ";
-    getline (cin, name);
-    cout << "Welcome " << name << " to the Silly Simple Math Tutor! Good luck and have fun!" << endl;
+    getline (cin, userName);
+    cout << "Welcome " << userName << " to the Silly Simple Math Tutor! Good luck and have fun!" << endl;
     cout << endl;
     cout << "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-" << endl;
     cout << endl;
 
-    do {
+    do { //while (userInput == "yes" || userInput == "y");
         leftNum = rand() % currentRange + 1; // Generates random numbers between 1 and 10 for the left number
         rightNum = rand() % currentRange + 1; // Generates random numbers between 1 and 10 for the right number
-        mathType = static_cast<MathType>(rand() % 4);
+
+        mathType = static_cast<MathType>(rand() % 4); // Generate a random number between 1 and 4 for the switch
 
         // mathType = 5; // only for testing default block
         //  Converts mathType numbers into symbols
@@ -120,7 +128,7 @@ int main() { // Initiate variables for user name and answer
         }
         for (int i = 1; i <= MAX_ATTEMPTS; i++) { // sets 3 attempts for the questions
             // Puts the numbers together to make a question and tells the user what level they are on
-            cout << "Level [" << mathLevel << "] " << name << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
+            cout << "Level [" << mathLevel << "] " << userName << ", what does " << leftNum << " " << mathSym << " " << rightNum << " = ";
 
             //Loop until the user enters numeric data
             while (!(cin >> userAnswer)) {
@@ -142,7 +150,7 @@ int main() { // Initiate variables for user name and answer
                     cout << "That is incorrect, the correct answer was " << correctAnswer << endl;
                 }
                 else { // tells the user to try again
-                    cout << "That is incorrect, you have " << (3 - i) << " trys left!" << endl;
+                    cout << "That is incorrect, you have " << (MAX_ATTEMPTS - i) << " attempts left!" << endl;
                 }
             } // End of else
         } // End of for loop
@@ -150,27 +158,28 @@ int main() { // Initiate variables for user name and answer
         if (totalCorrect == 3) { // Adds 10 to current range of numbers and levels up the user.
             currentRange = currentRange + LEVEL_CHANGE;
 
-            // Reset totalCorrect and incorrect counters
+            // Allows the user to level up or down again
             totalCorrect = 0;
             totalIncorrect = 0;
 
-            mathLevel ++;
+            mathLevel++;
             cout << "You leveled up. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
-            } // End of if
+        } // End of if
         else if (totalIncorrect == 3 && mathLevel > 1) {  // Subtracts 10 from the users current range and levels down the user.
             currentRange = currentRange - LEVEL_CHANGE;
 
-            // Reset totalCorrect and incorrect counters
+            // Allows the user to level up or down again
             totalIncorrect = 0;
             totalCorrect = 0;
 
-            mathLevel = mathLevel - 1;
+            mathLevel--;
             cout << "You leveled down. You are now level #" << mathLevel << " The numbers now range from 1 to " << currentRange << "." << endl;
             cout << endl;
         } // End of else if
 
             getline(cin, userInput); // clearing the newline from the input buffer
+
             while (true){
                 cout << "Do you want to continue? (Yes or No): "; // asks the user if they want another question
                 getline(cin, userInput); // Grab's user input
